@@ -12,23 +12,12 @@
     </div>
 
     <script>
-        // 1. ดึงค่า ID จาก URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const mapId = urlParams.get('id');
-
-        if (mapId) {
-            // 2. สร้างลิงก์สำหรับ Google Maps App โดยเฉพาะ
-            const googleMapsUrl = "https://www.google.com/maps/search/?api=1&query=" + mapId + "&shorturl=1";
-            const shortUrl = "https://goo.gl/maps/" + mapId;
-
-            // ตั้งค่าลิงก์สำรองเผื่อลูกค้าอยากกดเอง
-            document.getElementById('manual-link').href = shortUrl;
-
-            // 3. สั่งให้ดีดไป Google Maps ทันที
-            window.location.href = shortUrl;
-        } else {
-            document.querySelector('h2').innerText = "ไม่พบรหัสแผนที่ กรุณาตรวจสอบลิงก์";
-        }
+    const urlParams = new URLSearchParams(window.location.search);
+    const mapId = urlParams.get('id');
+    if (mapId) {
+        // ใช้ลิงก์ goo.gl โดยตรงเพื่อให้ระบบมือถือถามหาแอป Google Maps
+        window.location.replace("https://goo.gl/maps/" + mapId);
+    }
     </script>
 </body>
 </html>
